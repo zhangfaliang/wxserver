@@ -19,19 +19,24 @@ require("babel-register")({
   // Setting this to false will disable the cache.
   //cache: true
 });
+const http= require('http')
 const XResponseTime = require('../middleware/responseTime').default
 const logger = require('../middleware/logger').default
+const setUpAppProps = require('../serverSetup/index').default
 console.log(XResponseTime,'55555');
-
 const Koa = require('koa');
 const app = new Koa();
-
+// set app props
+setUpAppProps(app)
+// X-Response-time 中间件
 app.use(XResponseTime);
+//logger 中间件
 app.use(logger);
 
-// response
-
 app.use(async ctx => {
+  ctx.cookies.set('SESSION', 'tobi', { signed: true });
+  console.log(app.context.db,'000000');
+  
   ctx.body = 'Hello World';
 });
 
