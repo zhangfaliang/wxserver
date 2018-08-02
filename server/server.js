@@ -23,7 +23,7 @@ const http= require('http')
 const XResponseTime = require('../middleware/responseTime').default
 const logger = require('../middleware/logger').default
 const setUpAppProps = require('../serverSetup/index').default
-console.log(XResponseTime,'55555');
+const errorLog = require('../serverSetup/errorLog').default
 const Koa = require('koa');
 const app = new Koa();
 // set app props
@@ -35,10 +35,8 @@ app.use(logger);
 
 app.use(async ctx => {
   ctx.cookies.set('SESSION', 'tobi', { signed: true });
-  console.log(app.context.db,'000000');
-  
   ctx.body = 'Hello World';
 });
-
-
+//自定义error 监听
+errorLog(app);
 app.listen(5000);
