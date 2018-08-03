@@ -22,21 +22,25 @@ require("babel-register")({
 const http= require('http')
 const XResponseTime = require('../middleware/responseTime').default
 const logger = require('../middleware/logger').default
-const setUpAppProps = require('../serverSetup/index').default
-const errorLog = require('../serverSetup/errorLog').default
+const loggerContextProps = require('../middleware/loggerContextProps').default
+const setUpAppProps = require('../middleware/setUpApp').default
+const errorLog = require('../middleware/errorLogger').default
+
 const Koa = require('koa');
 const app = new Koa();
 // set app props
-setUpAppProps(app)
+app.use(setUpAppProps)
 // X-Response-time 中间件
 app.use(XResponseTime);
 //logger 中间件
 app.use(logger);
-
-app.use(async ctx => {
+//loggerContextProps 中间件
+app.use(async (ctx,next) => {
   ctx.cookies.set('SESSION', 'tobi', { signed: true });
   ctx.body = 'Hello World';
+  next()
 });
+app.use(loggerContextProps);
 //自定义error 监听
-errorLog(app);
+app.use(errorLog);
 app.listen(5000);
