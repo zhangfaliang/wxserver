@@ -34,6 +34,9 @@ npm manifest:
     },
     "homepage": "https://github.com/zhangfaliang/wxserver#readme",
     "dependencies": {
+      "assert": "^1.4.1",
+      "cookies": "^0.7.1",
+      "http-errors": "^1.7.0",
       "keygrip": "^1.0.2",
       "koa": "^2.5.2"
     },

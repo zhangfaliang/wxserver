@@ -1,6 +1,6 @@
 const createError = require('http-errors')
 
-export default (ctx, next) => { 
+const errorLogger = (ctx, next) => { 
   const app = ctx.app;
   //ctx.throw(400, 'name required', { user: 'user' });
   //createError(401, 'Please login to view this page.')
@@ -9,3 +9,5 @@ export default (ctx, next) => {
   });
   next()
 }
+
+module.exports = errorLogger

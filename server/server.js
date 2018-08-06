@@ -20,13 +20,13 @@ require("babel-register")({
   //cache: true
 });
 const http = require('http')
-const XResponseTime = require('../middleware/responseTime').default
-const logger = require('../middleware/logger').default
-const loggerContextProps = require('../middleware/loggerContextProps').default
-const setUpAppProps = require('../middleware/setUpApp').default
-const errorLog = require('../middleware/errorLogger').default
-const setCookies = require('../middleware/setCookies').default
-const getCookies = require('../middleware/getCookies').default
+const XResponseTime = require('../middleware/responseTime')
+const logger = require('../middleware/logger')
+const loggerContextProps = require('../middleware/loggerContextProps')
+const setUpAppProps = require('../middleware/setUpApp')
+const errorLog = require('../middleware/errorLogger')
+const setCookies = require('../middleware/setCookies')
+const getCookies = require('../middleware/getCookies')
 
 const Koa = require('koa');
 const app = new Koa();

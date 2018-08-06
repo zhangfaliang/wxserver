@@ -1,4 +1,4 @@
-export default async (ctx, next) => {
+const loggerContextProps = async (ctx, next) => {
   //console.log(ctx.request);
   //console.log(ctx.response);
   //console.log(ctx.state);
@@ -11,3 +11,4 @@ export default async (ctx, next) => {
   
   next();
 };
+module.exports = loggerContextProps

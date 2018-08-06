@@ -1,6 +1,6 @@
 const KeyGrip = require("keygrip");
 
-export default async (ctx, next) => {
+const setUpApp = async (ctx, next) => {
   const app = ctx.app;
   app.env = "development"; //app.env 默认是 NODE_ENV 或 "development"
   //   app.proxy 当真正的代理头字段将被信任时
@@ -15,3 +15,4 @@ export default async (ctx, next) => {
   // });
   next()
 };
+module.exports = setUpApp;
