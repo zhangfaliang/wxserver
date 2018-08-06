@@ -42,10 +42,7 @@ const setCookies =  (ctx, next) => {
       // await db.find('something')
      }
     
-
-    ctx.body='cookies is ok'
   } else { 
-    ctx.body='hello word'
   }
 
   next();

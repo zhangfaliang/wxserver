@@ -38,7 +38,8 @@ npm manifest:
       "cookies": "^0.7.1",
       "http-errors": "^1.7.0",
       "keygrip": "^1.0.2",
-      "koa": "^2.5.2"
+      "koa": "^2.5.2",
+      "koa-router": "^7.4.0"
     },
     "devDependencies": {
       "babel-plugin-transform-async-to-generator": "^6.24.1",

@@ -19,7 +19,7 @@ require("babel-register")({
   // Setting this to false will disable the cache.
   //cache: true
 });
-const http = require('http')
+const Koa = require('koa');
 const XResponseTime = require('../middleware/responseTime')
 const logger = require('../middleware/logger')
 const loggerContextProps = require('../middleware/loggerContextProps')
@@ -27,9 +27,9 @@ const setUpAppProps = require('../middleware/setUpApp')
 const errorLog = require('../middleware/errorLogger')
 const setCookies = require('../middleware/setCookies')
 const getCookies = require('../middleware/getCookies')
-
-const Koa = require('koa');
+const router = require('../routers/index')
 const app = new Koa();
+
 // set app props
 app.use(setUpAppProps)
 //setCookies
@@ -38,6 +38,7 @@ app.use(setCookies)
 app.use(getCookies)
 // X-Response-time 中间件
 app.use(XResponseTime);
+app.use(router.routes()).use(router.allowedMethods())
 //logger 中间件
 app.use(logger);
 //loggerContextProps 中间件
