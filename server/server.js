@@ -20,6 +20,7 @@ require("babel-register")({
   //cache: true
 });
 const Koa = require('koa');
+const bodyParser = require('koa-bodyparser')
 const XResponseTime = require('../middleware/responseTime')
 const logger = require('../middleware/logger')
 const loggerContextProps = require('../middleware/loggerContextProps')
@@ -30,6 +31,9 @@ const getCookies = require('../middleware/getCookies')
 const router = require('../routers/index')
 const app = new Koa();
 
+// 使用ctx.body解析中间件
+app.use(bodyParser())
+
 // set app props
 app.use(setUpAppProps)
 //setCookies
@@ -38,11 +42,11 @@ app.use(setCookies)
 app.use(getCookies)
 // X-Response-time 中间件
 app.use(XResponseTime);
-app.use(router.routes()).use(router.allowedMethods())
 //logger 中间件
 app.use(logger);
 //loggerContextProps 中间件
 app.use(loggerContextProps);
 //自定义error 监听
 app.use(errorLog);
+app.use(router.routes()).use(router.allowedMethods())
 app.listen(5000);
