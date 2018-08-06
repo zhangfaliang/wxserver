@@ -19,27 +19,28 @@ require("babel-register")({
   // Setting this to false will disable the cache.
   //cache: true
 });
-const http= require('http')
+const http = require('http')
 const XResponseTime = require('../middleware/responseTime').default
 const logger = require('../middleware/logger').default
 const loggerContextProps = require('../middleware/loggerContextProps').default
 const setUpAppProps = require('../middleware/setUpApp').default
 const errorLog = require('../middleware/errorLogger').default
+const setCookies = require('../middleware/setCookies').default
+const getCookies = require('../middleware/getCookies').default
 
 const Koa = require('koa');
 const app = new Koa();
 // set app props
 app.use(setUpAppProps)
+//setCookies
+app.use(setCookies)
+//getCookies
+app.use(getCookies)
 // X-Response-time 中间件
 app.use(XResponseTime);
 //logger 中间件
 app.use(logger);
 //loggerContextProps 中间件
-app.use(async (ctx,next) => {
-  ctx.cookies.set('SESSION', 'tobi', { signed: true });
-  ctx.body = 'Hello World';
-  next()
-});
 app.use(loggerContextProps);
 //自定义error 监听
 app.use(errorLog);
