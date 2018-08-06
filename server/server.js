@@ -21,6 +21,8 @@ require("babel-register")({
 });
 const Koa = require('koa');
 const bodyParser = require('koa-bodyparser')
+const static = require('koa-static')
+const path = require('path')
 const XResponseTime = require('../middleware/responseTime')
 const logger = require('../middleware/logger')
 const loggerContextProps = require('../middleware/loggerContextProps')
@@ -30,6 +32,11 @@ const setCookies = require('../middleware/setCookies')
 const getCookies = require('../middleware/getCookies')
 const router = require('../routers/index')
 const app = new Koa();
+// 静态资源目录对于相对入口文件index.js的路径
+const staticPath = '../static'
+app.use(static(
+  path.join(__dirname,staticPath)
+))
 
 // 使用ctx.body解析中间件
 app.use(bodyParser())

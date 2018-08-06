@@ -17,6 +17,7 @@ const home = (Router) => {
       <p>email</p>
       <input name="email" /><br/>
       <button type="submit">submit</button>
+      <img src='/img/1.png'></img>
     </form>
     `;
     ctx.body = html;
