@@ -38,13 +38,13 @@ const router = require('../routers/index')
 const setSession = require('../middleware/setSession')
 const defaultConfig = require('../default.config')
 const connection = require('../middleware/connectionMysql')
-
+const createPool =require('../middleware/createPool')
 const app = new Koa();
 // 静态资源目录对于相对入口文件index.js的路径
 const staticPath = '../static'
 
 //连接数据库
-app.use(connection)
+app.use(createPool)
 //MysqlSession 中间件
 let store = new MysqlSession(defaultConfig.db);
 //静态资源中间件

@@ -2,11 +2,9 @@ const parsePostData = require("../utils/postParse");
 const home = Router => {
   let homeRouter = new Router();
   homeRouter.get("/", async ctx => {
-    const request = ctx.request;
-    let req_query = request.query;
-    let req_querystring = request.querystring;
-    let ctx_query = ctx.query;
-    let ctx_querystring = ctx.querystring;
+    const app = ctx.app;
+    const data = await app.query(app.pool,'SELECT * FROM _mysql_session_store')
+  
     let html = `
     <button class="btn" id="J_UploadPictureBtn">上传图片</button>
     <hr/>
@@ -16,7 +14,10 @@ const home = Router => {
     </div>
     <script src="/js/index.js"></script>
     `;
+    console.log(data,'88888888888888888');
+    
     ctx.body = html;
+    
   });
   homeRouter.post("/", async (ctx, next) => {
     let postData = ctx.request.body;
