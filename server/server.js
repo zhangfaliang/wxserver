@@ -63,6 +63,8 @@ app.use(setUpAppProps)
 // app.use(getCookies)
 // X-Response-time 中间件
 app.use(setSession)
+app.use(router.routes()).use(router.allowedMethods())
+
 app.use(XResponseTime);
 //logger 中间件
 app.use(logger);
@@ -70,7 +72,6 @@ app.use(logger);
 app.use(loggerContextProps);
 //自定义error 监听
 app.use(errorLog);
-app.use(router.routes()).use(router.allowedMethods())
 // app.use(views(path.join(__dirname, './view'), {
 //   extension: 'ejs'
 // }))

@@ -9,7 +9,7 @@ const routers = () => {
   router.use("/", home.routes(), home.allowedMethods());
   router.use("/page", page.routes(), page.allowedMethods());
   router.use("/set", set.routes(), set.allowedMethods());
-  router.use("/upload.json",upload.routes(),upload.allowedMethods())
+  router.use("/api",upload.routes(),upload.allowedMethods())
   return router;
 };
 module.exports = routers();
