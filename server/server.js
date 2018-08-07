@@ -19,11 +19,11 @@ require("babel-register")({
   // Setting this to false will disable the cache.
   //cache: true
 });
-const Koa = require('koa');
+const Koa = require('koa')
 const bodyParser = require('koa-bodyparser')
 const static = require('koa-static')
 const path = require('path')
-const session = require('koa-session-minimal');
+const session = require('koa-session-minimal')
 const MysqlSession = require('koa-mysql-session')
 const views = require('koa-views')
 
@@ -37,10 +37,14 @@ const getCookies = require('../middleware/getCookies')
 const router = require('../routers/index')
 const setSession = require('../middleware/setSession')
 const defaultConfig = require('../default.config')
+const connection = require('../middleware/connectionMysql')
 
 const app = new Koa();
 // 静态资源目录对于相对入口文件index.js的路径
 const staticPath = '../static'
+
+//连接数据库
+app.use(connection)
 //MysqlSession 中间件
 let store = new MysqlSession(defaultConfig.db);
 //静态资源中间件

@@ -1,7 +1,7 @@
 const Keygrip = require("keygrip");
 const assert = require("assert"); //断言
 let keylist, keys, hash, index;
-const setCookies = (ctx, next) => {
+const setCookies = async (ctx, next) => {
   // 3.1  maxAge：一个数字，表示Date.now() 到期的毫秒数
   // 3.2 expires：一个Date对象，指示cookie的到期时间（默认情况下在会话结束时到期）
   // 3.3 path ： 表示cookie路径的字符串（默认情况下/）
@@ -46,6 +46,6 @@ const setCookies = (ctx, next) => {
     }
   }
 
-  next();
+  await next();
 };
 module.exports = setCookies;

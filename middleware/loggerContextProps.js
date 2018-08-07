@@ -10,6 +10,6 @@ const loggerContextProps = async (ctx, next) => {
   // console.log("request.is",ctx.request.is('html'));
   console.log('111111111111111');
 
-  next();
+  await next();
 };
 module.exports = loggerContextProps

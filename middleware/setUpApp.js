@@ -13,6 +13,6 @@ const setUpApp = async (ctx, next) => {
   //     return "0.0.0.0";
   //   }
   // });
-  next()
+  await next()
 };
 module.exports = setUpApp;

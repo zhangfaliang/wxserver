@@ -14,6 +14,6 @@ const setSession = async (ctx, next) => {
       count: 1
     };
   }
-  next();
+  await next();
 };
 module.exports = setSession;
