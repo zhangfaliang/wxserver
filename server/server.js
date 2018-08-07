@@ -23,6 +23,8 @@ const Koa = require('koa');
 const bodyParser = require('koa-bodyparser')
 const static = require('koa-static')
 const path = require('path')
+const session = require('koa-session-minimal');
+const MysqlSession = require('koa-mysql-session')
 const XResponseTime = require('../middleware/responseTime')
 const logger = require('../middleware/logger')
 const loggerContextProps = require('../middleware/loggerContextProps')
@@ -31,23 +33,34 @@ const errorLog = require('../middleware/errorLogger')
 const setCookies = require('../middleware/setCookies')
 const getCookies = require('../middleware/getCookies')
 const router = require('../routers/index')
+const setSession = require('../middleware/setSession')
+const defaultConfig = require('../default.config')
+
 const app = new Koa();
 // 静态资源目录对于相对入口文件index.js的路径
 const staticPath = '../static'
+//MysqlSession 中间件
+let store = new MysqlSession(defaultConfig.db);
+//静态资源中间件
+app.use(session({
+  key: 'SESSION_ID',
+  store: store,
+  cookie:defaultConfig.cookies
+}))
+//静态资源中间件
 app.use(static(
   path.join(__dirname,staticPath)
 ))
-
 // 使用ctx.body解析中间件
 app.use(bodyParser())
-
 // set app props
 app.use(setUpAppProps)
 //setCookies
-app.use(setCookies)
-//getCookies
-app.use(getCookies)
+// app.use(setCookies)
+// //getCookies
+// app.use(getCookies)
 // X-Response-time 中间件
+app.use(setSession)
 app.use(XResponseTime);
 //logger 中间件
 app.use(logger);

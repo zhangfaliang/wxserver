@@ -20,13 +20,9 @@ const home = (Router) => {
       <img src='/img/1.png'></img>
     </form>
     `;    
-    ctx.body = html;
-    // ctx.body = {
-    //   req_query,
-    //   req_querystring,
-    //   ctx_query,
-    //   ctx_querystring
-    // };
+    ctx.body=html
+   
+  
   })
   homeRouter.post('/', async (ctx, next) => { 
     let postData = ctx.request.body
