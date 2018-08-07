@@ -22,6 +22,13 @@ const defaultConfig = {
     secure: '',
     sameSite: '',
     signed: '',
+  },
+  upload_file: {
+    address: ['./static/','upload_file'],
+    file_type: {
+      common: 'common',
+      album:'album'
+    }
   }
 }
 module.exports = defaultConfig

@@ -19,7 +19,9 @@
   "homepage": "https://github.com/zhangfaliang/wxserver#readme",
   "dependencies": {
     "assert": "^1.4.1",
+    "busboy": "^0.2.14",
     "cookies": "^0.7.1",
+    "ejs": "^2.6.1",
     "http-errors": "^1.7.0",
     "keygrip": "^1.0.2",
     "koa": "^2.5.2",
@@ -27,7 +29,8 @@
     "koa-mysql-session": "0.0.2",
     "koa-router": "^7.4.0",
     "koa-session-minimal": "^3.0.4",
-    "koa-static": "^5.0.0"
+    "koa-static": "^5.0.0",
+    "koa-views": "^6.1.4"
   },
   "devDependencies": {
     "babel-plugin-transform-async-to-generator": "^6.24.1",

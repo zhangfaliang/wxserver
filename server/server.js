@@ -25,6 +25,8 @@ const static = require('koa-static')
 const path = require('path')
 const session = require('koa-session-minimal');
 const MysqlSession = require('koa-mysql-session')
+const views = require('koa-views')
+
 const XResponseTime = require('../middleware/responseTime')
 const logger = require('../middleware/logger')
 const loggerContextProps = require('../middleware/loggerContextProps')
@@ -69,4 +71,15 @@ app.use(loggerContextProps);
 //自定义error 监听
 app.use(errorLog);
 app.use(router.routes()).use(router.allowedMethods())
+// app.use(views(path.join(__dirname, './view'), {
+//   extension: 'ejs'
+// }))
+
+// app.use( async ( ctx ) => {
+//   let title = 'hello koa2'
+//   await ctx.render('index', {
+//     title,
+//   })
+// })
+
 app.listen(5000);
