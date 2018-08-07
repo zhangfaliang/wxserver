@@ -25,12 +25,13 @@ const setCookies =  (ctx, next) => {
       signed: true,
       domain: 'localhost',
      // path: '/',
-      maxAge:  1000,
+      maxAge:  1000*60*10,
       expires: new Date(),
       httpOnly: true,
       overwrite: false,
       //secure:true
     });
+    ctx.keys = keys;
     ctx.set({
       'Etag': '1234',
       'Last-Modified': new Date

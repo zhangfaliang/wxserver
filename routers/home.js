@@ -19,7 +19,7 @@ const home = (Router) => {
       <button type="submit">submit</button>
       <img src='/img/1.png'></img>
     </form>
-    `;
+    `;    
     ctx.body = html;
     // ctx.body = {
     //   req_query,

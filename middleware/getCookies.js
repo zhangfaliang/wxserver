@@ -1,9 +1,10 @@
 const Keygrip = require('keygrip')
-const getCookoes =  (ctx, next) => { 
+const getCookoes = (ctx, next) => { 
+  const keys = ctx.keys;
   const SESSION = ctx.cookies.get('SESSION')
-  const SESSION_SINGED = ctx.cookies.get('SESSION', {
-    signed:true
-  })
+  if (keys.verify('bieberschnitzel', SESSION)) { 
+    console.log(SESSION,'cookie is ok');
+  }
   next();
 }
 
