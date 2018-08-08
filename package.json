@@ -2,11 +2,13 @@
   "name": "wxserver",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "private": true,
   "scripts": {
     "start": "node ./server/server.js",
     "test": "node ./node_modules/.bin/mocha",
-    "debugger":"node --inspect ./server/server.js"
+    "debugger": "node --inspect ./server/server.js",
+    "init_sql": "node ./utils/run_db.js",
+    "build:dev": "webpack --config ./webpack.config.js"
   },
   "repository": {
     "type": "git",
@@ -31,7 +33,9 @@
     "koa-router": "^7.4.0",
     "koa-session-minimal": "^3.0.4",
     "koa-static": "^5.0.0",
-    "koa-views": "^6.1.4"
+    "koa-views": "^6.1.4",
+    "lodash": "^4.17.10",
+    "url-loader": "^1.0.1"
   },
   "devDependencies": {
     "babel-plugin-transform-async-to-generator": "^6.24.1",
@@ -39,7 +43,14 @@
     "babel-preset-env": "^1.7.0",
     "babel-register": "^6.26.0",
     "chai": "^4.1.2",
+    "css-loader": "^1.0.0",
+    "csv-loader": "^3.0.2",
+    "file-loader": "^1.1.11",
     "mocha": "^5.2.0",
-    "supertest": "^3.1.0"
+    "style-loader": "^0.22.0",
+    "supertest": "^3.1.0",
+    "webpack": "^4.16.5",
+    "webpack-cli": "^3.1.0",
+    "xml-loader": "^1.2.1"
   }
 }
