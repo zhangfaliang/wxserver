@@ -1,17 +1,21 @@
 const path = require("path");
+const CleanWeppackPlugin = require("clean-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const CleanWebpackPlugin = require("clean-webpack-plugin");
-const webpack = require('webpack')
 
 module.exports = {
   entry: {
-    app:'./src/index.js'
+    app: "./src/index.js"
   },
+  plugins: [
+    new CleanWeppackPlugin(["dist"]),
+    new HtmlWebpackPlugin({
+      title: "product"
+    }),
+   
+  ],
   output: {
-    filename: "[name].bundel.js",
-    path: path.resolve(__dirname, "dist"),
-    publicPath: '/'
-
+    filename: "[name].bundle.js",
+    path: path.resolve(__dirname, "dist")
   },
   module: {
     rules: [
@@ -36,13 +40,5 @@ module.exports = {
         use: ["xml-loader"]
       }
     ]
-  },
-  plugins: [
-    new CleanWebpackPlugin(["dist"]),
-    new HtmlWebpackPlugin({
-      title: "Output Management"
-    }),
-    new webpack.HotModuleReplacementPlugin()
-  ],
-  devtool: "inline-source-map",
+  }
 };

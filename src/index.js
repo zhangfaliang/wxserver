@@ -1,13 +1,13 @@
-import { join } from "lodash";
 import './style.css';
 import CJ from '../static/img/1.png';
 import Data from '../static/data/data.xml';
 import printMe from './print';
+import { cube } from './math';
 function component() {
   var element = document.createElement('div');
   var btn = document.createElement('button')
 
-  element.innerHTML = join(['Hello', 'webpack', ' ']);
+  element.innerHTML = ['Hello webpack!','5 cubed is equal to '+cube(5)].join('\n\n');
   element.classList.add('hello');
   element.classList.add('icon-icon-geren');
   btn.innerHTML = 'Click me and check the console!';

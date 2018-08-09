@@ -1,4 +1,4 @@
 export default function printMe() {
-  console.log('updata print.js....')
+  console.log('updata print.js..   ..')
   
 }
