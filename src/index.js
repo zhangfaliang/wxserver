@@ -14,11 +14,11 @@ function component() {
   element.classList.add("hello");
   element.classList.add("icon-icon-geren");
   btn.innerHTML = "Click me and check the console!";
-  btn.onclick = () =>
-    import(/*webpackChunkName: 'lodash'*/ "./print").then(module => {
-      var print = module.default;
-      print();
-    });
+  btn.onclick = () =>printMe
+    // import(/*webpackChunkName: 'lodash'*/ "./print").then(module => {
+    //   var print = module.default;
+    //   print();
+    // });
 
   // 图片添加到现在的div
   const myCJ = new Image();
@@ -42,6 +42,18 @@ fetch("https://jsonplaceholder.typicode.com/users")
   .catch(error =>
     console.error("Something went wrong when fetching this data: ", error)
   );
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker
+      .register("/sw.js")
+      .then(registration => {
+        console.log("SW registered: ", registration);
+      })
+      .catch(registrationError => {
+        console.log("SW registration failed: ", registrationError);
+      });
+  });
+}
 
 //在安装一个要打包到生产环境的安装包时，你应该使用 npm install --save，
 //如果你在安装一个用于开发环境的安装包（例如，linter, 测试库等），
