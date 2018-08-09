@@ -67,4 +67,6 @@
 .hello{
   color:red;
   font-family: 'iconfont';
+  display: flex;
+  justify-content: flex-start;
 }
