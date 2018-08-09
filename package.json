@@ -25,6 +25,7 @@
   "homepage": "https://github.com/zhangfaliang/wxserver#readme",
   "dependencies": {
     "assert": "^1.4.1",
+    "babel-polyfill": "^6.26.0",
     "busboy": "^0.2.14",
     "cookies": "^0.7.1",
     "ejs": "^2.6.1",
@@ -38,7 +39,8 @@
     "koa-static": "^5.0.0",
     "koa-views": "^6.1.4",
     "lodash": "^4.17.10",
-    "url-loader": "^1.0.1"
+    "url-loader": "^1.0.1",
+    "whatwg-fetch": "^2.0.4"
   },
   "devDependencies": {
     "babel-plugin-transform-async-to-generator": "^6.24.1",
@@ -49,8 +51,10 @@
     "clean-webpack-plugin": "^0.1.19",
     "css-loader": "^1.0.0",
     "csv-loader": "^3.0.2",
+    "exports-loader": "^0.7.0",
     "file-loader": "^1.1.11",
     "html-webpack-plugin": "^3.2.0",
+    "imports-loader": "^0.8.0",
     "mocha": "^5.2.0",
     "style-loader": "^0.22.1",
     "supertest": "^3.1.0",

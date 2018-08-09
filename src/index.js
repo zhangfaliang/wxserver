@@ -1,34 +1,68 @@
-import './style.css';
-import CJ from '../static/img/1.png';
-import Data from '../static/data/data.xml';
-import printMe from './print';
-import { cube } from './math';
+import "./style.css";
+import CJ from "../static/img/1.png";
+import Data from "../static/data/data.xml";
+import printMe from "./print";
+import { cube } from "./math";
+import { file, parse } from "./globals.js";
 function component() {
-  var element = document.createElement('div');
-  var btn = document.createElement('button')
+  var element = document.createElement("div");
+  var btn = document.createElement("button");
 
-  element.innerHTML = ['Hello webpack!','5 cubed is equal to '+cube(5)].join('\n\n');
-  element.classList.add('hello');
-  element.classList.add('icon-icon-geren');
-  btn.innerHTML = 'Click me and check the console!';
-  btn.onclick = printMe;
+  element.innerHTML = ["Hello webpack!", "5 cubed is equal to " + cube(5)].join(
+    "\n\n"
+  );
+  element.classList.add("hello");
+  element.classList.add("icon-icon-geren");
+  btn.innerHTML = "Click me and check the console!";
+  btn.onclick = () =>
+    import(/*webpackChunkName: 'lodash'*/ "./print").then(module => {
+      var print = module.default;
+      print();
+    });
+
   // 图片添加到现在的div
   const myCJ = new Image();
   myCJ.src = CJ;
-  element.appendChild(btn)
+  element.appendChild(btn);
   //element.appendChild(myCJ)
-  console.log(Data);
-  
+  console.log(file);
+
   return element;
 }
 document.body.appendChild(component());
+
+fetch("https://jsonplaceholder.typicode.com/users")
+  .then(response => response.json())
+  .then(json => {
+    console.log(
+      "We retrieved some data! AND we're confident it will work on a variety of browser distributions."
+    );
+    console.log(json);
+  })
+  .catch(error =>
+    console.error("Something went wrong when fetching this data: ", error)
+  );
+
 //在安装一个要打包到生产环境的安装包时，你应该使用 npm install --save，
 //如果你在安装一个用于开发环境的安装包（例如，linter, 测试库等），
 //你应该使用 npm install--save - dev。请在 npm 文档 中查找更多信息。
 
-if (module.hot) { 
-  module.hot.accept('./print.js',function () {
-    console.log('accepting the updated prinMe module');
-    printMe()
-  })
-}
+// if (module.hot) {
+//   module.hot.accept('./print.js',function () {
+//     console.log('accepting the updated prinMe module');
+//     printMe()
+//   })
+// }
+
+// function getComponent(params) {
+//   return import(/*webpackChunkName*/'lodash').then(_ => {
+//     var element = document.createElement('div');
+//     var _ = _.default;
+//     element.innerHTML = _.join(['Hello', 'webpack'], ' ');
+//     return element;
+//   }).catch(error => 'An error occurred while loading the component');
+// }
+
+// getComponent().then(component => {
+//   document.body.appendChild(component);
+// })
