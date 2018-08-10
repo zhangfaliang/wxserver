@@ -15,7 +15,8 @@ module.exports = {
   plugins: [
     new CleanWeppackPlugin(["dist"]),
     new HtmlWebpackPlugin({
-      title: "product"
+      title: "product",
+      template: 'index.html'
     }),
     new webpack.ProvidePlugin({
       _: "lodash"
