@@ -48,6 +48,7 @@
     "koa-static": "^5.0.0",
     "koa-views": "^6.1.4",
     "lodash": "^4.17.10",
+    "postcss-nested": "^3.0.0",
     "url-loader": "^1.0.1",
     "whatwg-fetch": "^2.0.4"
   },

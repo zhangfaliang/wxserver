@@ -3,7 +3,9 @@ module.exports = {
     require('autoprefixer'),
     require('postcss-partial-import'),//就是让你的css文件支持@import
     require('postcss-advanced-variables'),//像SASS那样可以自定义变量并进行引用
-    require('cssnano')({
+    require('postcss-nested')({ bubble: ['phone'] }),//像SASS那样可以父套子
+
+    require('cssnano')({//感觉就是css代码压缩工具（实际上它集成了很多强化的功能，表面上看起来是压缩实际上进行了相当多处理，可以看看这个表格Optimisations），他的配置建议采用默认配置，除非你知道你在做什么。
       preset: 'default',
     }),
   ] ,

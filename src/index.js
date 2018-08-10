@@ -42,18 +42,18 @@ document.body.appendChild(component());
 //   .catch(error =>
 //     console.error("Something went wrong when fetching this data: ", error)
 //   );
-if ("serviceWorker" in navigator) {
-  window.addEventListener("load", () => {
-    navigator.serviceWorker
-      .register("/sw.js")
-      .then(registration => {
-        console.log("SW registered: ", registration);
-      })
-      .catch(registrationError => {
-        console.log("SW registration failed: ", registrationError);
-      });
-  });
-}
+// if ("serviceWorker" in navigator) {
+//   window.addEventListener("load", () => {
+//     navigator.serviceWorker
+//       .register("/sw.js")
+//       .then(registration => {
+//         console.log("SW registered: ", registration);
+//       })
+//       .catch(registrationError => {
+//         console.log("SW registration failed: ", registrationError);
+//       });
+//   });
+// }
 
 //在安装一个要打包到生产环境的安装包时，你应该使用 npm install --save，
 //如果你在安装一个用于开发环境的安装包（例如，linter, 测试库等），
