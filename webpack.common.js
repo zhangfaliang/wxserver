@@ -10,8 +10,7 @@ const ASSET_PATH = process.env.ASSET_PATH || "/";
 module.exports = {
   entry: {
     index: "./src/index.js",
-    polyfills: "./src/polyfills.js",
-    anonther: "./src/another-module.js"
+    // polyfills: "./src/polyfills.js",
   },
   plugins: [
     new CleanWeppackPlugin(["dist"]),
@@ -45,10 +44,10 @@ module.exports = {
       //   test: require.resolve('./src/index.js'),
       //   use:'imports-loader?this=>window' 改变this
       // },
-      {
-        test: require.resolve("./src/globals.js"),
-        use: "exports-loader?file,parse=helpers.parse"
-      },
+      // {
+      //   test: require.resolve("./src/globals.js"),
+      //   use: "exports-loader?file,parse=helpers.parse"
+      // },
       {
         test: /\.js$/,
         loader: "babel-loader",

@@ -1,9 +1,9 @@
 import React from 'react';
 import { Button, WhiteSpace, WingBlank } from 'antd-mobile';
 
-const ButtonExample = () => (
+const ButtonExample1 = () => (
   <WingBlank>
-      <h5 >example</h5>
+      <h5  >jksjrg</h5>
     <Button>default</Button><WhiteSpace />
     <Button disabled>default disabled</Button><WhiteSpace />
 
@@ -35,4 +35,4 @@ const ButtonExample = () => (
   </WingBlank>
 );
 
-export default ButtonExample;
+export default ButtonExample1;

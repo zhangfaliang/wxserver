@@ -1,16 +1,14 @@
-import React, { Component } from 'react'
+import React, { Component } from "react";
 import styles from "./style.css";
-import ButtonExample from './components/example';
-class App extends Component { 
-  render() { 
-    console.log(styles,'555555555');
-    
+import ButtonExample from "./components/example";
+import { browserHistory } from "react-router";
+class App extends Component {
+  render() {
     return (
       <div>
-        <h5 className={styles.hello}>jksjrg</h5>
-       <ButtonExample></ButtonExample>
+        <ButtonExample />
       </div>
-    )
+    );
   }
 }
 
