@@ -52,22 +52,54 @@ module.exports = {
       {
         test: /\.js$/,
         loader: "babel-loader",
-        exclude: /(node_modules|bower_components)/,
+        exclude: /(node_modules|bower_components)/
       },
       {
-        test: /\.css$/,
-       // exclude: /node_modules/,
+        test: /\.(css|less)$/,
+        exclude: /node_modules/,
         use: ExtractTextPlugin.extract({
           fallback: "style-loader",
           use: [
-            "css-loader",
-            {loader: "less-loader"}, // compiles Less to CSS
+            {
+              loader: "css-loader",
+              options: {
+                modules: true,
+                localIdentName: "[hash:base64:6]"
+              }
+            },          
             {
               loader: "postcss-loader"
             },
-            
+            {
+              loader: "resolve-url-loader",
+              options: {
+                sourceMap: true
+              }
+            },
+            {
+              loader: "less-loader",
+              options: {
+                sourceMap: true
+              }
+            }
           ]
         })
+      },
+      {
+        test: /\.css$/, 
+        include: /node_modules/,
+        use: [
+          {
+            loader: "style-loader"
+          },
+          {
+            loader: "css-loader"
+          },
+          {
+            loader: "postcss-loader"
+          }
+        ],
+      
       },
       {
         test: /\.(woff|woff2|eot|ttf|svg)(\?.*$|$)/,
