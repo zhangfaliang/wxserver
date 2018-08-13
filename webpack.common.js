@@ -3,20 +3,22 @@ const CleanWeppackPlugin = require("clean-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const webpack = require("webpack");
 const WorkboxPlugin = require("workbox-webpack-plugin");
-const ASSET_PATH = process.env.ASSET_PATH || '/';
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
+
+const ASSET_PATH = process.env.ASSET_PATH || "/";
 
 module.exports = {
   entry: {
     index: "./src/index.js",
     polyfills: "./src/polyfills.js",
-    anonther: "./src/another-module.js",
-
+    anonther: "./src/another-module.js"
   },
   plugins: [
     new CleanWeppackPlugin(["dist"]),
+    new ExtractTextPlugin("styles.css"),
     new HtmlWebpackPlugin({
       title: "product",
-      template: 'index.html'
+      template: "index.html"
     }),
     new webpack.ProvidePlugin({
       _: "lodash"
@@ -28,14 +30,14 @@ module.exports = {
       skipWaiting: true
     }),
     new webpack.DefinePlugin({
-      'process.env.ASSET_PATH': JSON.stringify(ASSET_PATH)
-    }),
+      "process.env.ASSET_PATH": JSON.stringify(ASSET_PATH)
+    })
+    // new ExtractTextPlugin( "styles.css"),
   ],
   output: {
     filename: "[name].[chunkhash].js",
     path: path.resolve(__dirname, "dist"),
     publicPath: ASSET_PATH
-
   },
   module: {
     rules: [
@@ -49,22 +51,21 @@ module.exports = {
       },
       {
         test: /\.js$/,
-        loader: 'babel-loader',
+        loader: "babel-loader",
         exclude: /(node_modules|bower_components)/,
-        options: {
-        //  presets: ['@babel/preset-env'],
-        //  plugins: [require('@babel/plugin-transform-object-rest-spread')]
-        }
       },
       {
         test: /\.css$/,
         exclude: /node_modules/,
-        use: [
-          "style-loader",
-          "css-loader",
-          {
-            loader: 'postcss-loader',
-          }]
+        use: ExtractTextPlugin.extract({
+          fallback: "style-loader",
+          use: [
+            "css-loader",
+            {
+              loader: "postcss-loader"
+            }
+          ]
+        })
       },
       {
         test: /\.(woff|woff2|eot|ttf|svg)(\?.*$|$)/,

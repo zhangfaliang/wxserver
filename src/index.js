@@ -4,6 +4,35 @@ import Data from "../static/data/data.xml";
 import printMe from "./print";
 import { cube } from "./math";
 import { file, parse } from "./globals.js";
+import viewportUnitsBuggyfillHacks from "../src/viewportUnitsBuggyfillHacks";
+import { init } from "viewport-units-buggyfill";
+
+init({
+  hacks: viewportUnitsBuggyfillHacks
+});
+// window.onload = function() {
+//   var winDPI = window.devicePixelRatio;
+//   var uAgent = window.navigator.userAgent;
+//   var screenHeight = window.screen.height;
+//   var screenWidth = window.screen.width;
+//   var winWidth = window.innerWidth;
+//   var winHeight = window.innerHeight;
+//   console.log(
+//     "Windows DPI:" +
+//       winDPI +
+//       ";\ruAgent:" +
+//       uAgent +
+//       ";\rScreen Width:" +
+//       screenWidth +
+//       ";\rScreen Height:" +
+//       screenHeight +
+//       ";\rWindow Width:" +
+//       winWidth +
+//       ";\rWindow Height:" +
+//       winHeight
+//   );
+// };
+
 function component() {
   var element = document.createElement("div");
   var btn = document.createElement("button");
@@ -14,11 +43,11 @@ function component() {
   element.classList.add("hello");
   element.classList.add("icon-icon-geren");
   btn.innerHTML = "Click me and check the console!";
-  btn.onclick = () =>printMe
-    // import(/*webpackChunkName: 'lodash'*/ "./print").then(module => {
-    //   var print = module.default;
-    //   print();
-    // });
+  btn.onclick = () => printMe;
+  // import(/*webpackChunkName: 'lodash'*/ "./print").then(module => {
+  //   var print = module.default;
+  //   print();
+  // });
 
   // 图片添加到现在的div
   const myCJ = new Image();
