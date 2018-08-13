@@ -5,6 +5,8 @@
       "targets": {
         "node": "current"
       }
-    }]
+    }],
+    "react",
+    
   ]
 }
