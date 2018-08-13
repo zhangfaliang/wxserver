@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
 import "./style.css";
-
+import ButtonExample from './components/example';
 class App extends Component { 
   render() { 
     return (
       <div>
-        <h5>5464</h5>
+       <ButtonExample></ButtonExample>
       </div>
     )
   }

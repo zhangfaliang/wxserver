@@ -1,12 +1,19 @@
 {
-  "plugins": ["transform-async-to-generator","transform-async-to-module-method"],
+  "plugins": [
+    "syntax-dynamic-import",
+    "transform-async-to-generator",
+    "transform-async-to-module-method",
+    ["import", { "libraryName": "antd-mobile", "style": "css" }]
+  ],
   "presets": [
-    ["env", {
-      "targets": {
-        "node": "current"
+    [
+      "env",
+      {
+        "targets": {
+          "node": "current"
+        }
       }
-    }],
-    "react",
-    
+    ],
+    "react"
   ]
 }
