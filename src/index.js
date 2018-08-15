@@ -1,16 +1,16 @@
-import reactDom from 'react-dom';
 import React from 'react';
+import { render } from 'react-dom';
+import { Provider } from 'react-redux';
 import { createStore } from 'redux';
-import App from './app';
-import 'reset-css';
-import { Route, BrowserRouter as Router} from 'react-router-dom'
-//import routeConfig from './routes/index';
-import children from './components/example/children';
-import todoApp from './reducers/todo';
+import { composeWithDevTools } from 'redux-devtools-extension';
 
-let store = createStore(todoApp);
-console.log(store.getState(),'99999')
-reactDom.render(
-  <App/>,
-  document.getElementById("root")
+import todoApp from './reducers';
+import App from './components/App';
+
+let store = createStore(todoApp,composeWithDevTools())
+render(
+  <Provider store={store}>
+    <App/>
+  </Provider>,
+  document.getElementById('root')
 )

@@ -104,6 +104,7 @@
     "postcss-partial-import": "^4.1.0",
     "postcss-pxtorem": "^4.0.1",
     "precss": "^3.1.2",
+    "redux-devtools-extension": "^2.13.5",
     "style-loader": "^0.22.1",
     "sugarss": "^1.0.1",
     "supertest": "^3.1.0",
