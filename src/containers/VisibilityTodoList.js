@@ -1,7 +1,7 @@
 import { connect } from "react-redux";
 import { toggleTodo } from "../actions/todo";
 import TodoList from "../components/todo/TodoList";
-
+import { fetchPosts } from '../actions/subreddit';
 const getVisibleTodos = (todos, filter) => {
   switch (filter) {
     case "SHOW_ALL":
@@ -22,6 +22,9 @@ const mapDisPatchToProps = dispatch => {
   return {
     onTodoClick: id => {
       dispatch(toggleTodo(id));
+    },
+    getSubreddit: id => { 
+      dispatch(fetchPosts(id));
     }
   };
 };

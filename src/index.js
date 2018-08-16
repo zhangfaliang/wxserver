@@ -1,16 +1,26 @@
-import React from 'react';
-import { render } from 'react-dom';
-import { Provider } from 'react-redux';
-import { createStore } from 'redux';
-import { composeWithDevTools } from 'redux-devtools-extension';
+import React from "react";
+import { render } from "react-dom";
+import { Provider } from "react-redux";
+import { createStore, applyMiddleware } from "redux";
+import thunkMiddleware from "redux-thunk";
+import { createLogger } from "redux-logger";
 
-import todoApp from './reducers';
-import App from './components/App';
+import { composeWithDevTools } from "redux-devtools-extension";
 
-let store = createStore(todoApp,composeWithDevTools())
+import todoApp from "./reducers";
+import App from "./components/App";
+
+let store = createStore(
+  todoApp,
+  composeWithDevTools(
+    applyMiddleware(
+      thunkMiddleware,
+    )
+  )
+);
 render(
   <Provider store={store}>
-    <App/>
+    <App />
   </Provider>,
-  document.getElementById('root')
-)
+  document.getElementById("root")
+);

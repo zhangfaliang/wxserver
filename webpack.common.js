@@ -9,8 +9,8 @@ const ASSET_PATH = process.env.ASSET_PATH || "/";
 
 module.exports = {
   entry: {
+    polyfills: "./src/polyfills.js",
     index: "./src/index.js",
-    // polyfills: "./src/polyfills.js",
   },
   plugins: [
     new CleanWeppackPlugin(["dist"]),
