@@ -41,7 +41,8 @@ const connection = require('../middleware/connectionMysql')
 const createPool = require('../middleware/createPool')
 const app = new Koa();
 // 静态资源目录对于相对入口文件index.js的路径
-const staticPath = '../static'
+//const staticPath = '../static'
+const staticPath = '../dist'
 
 //连接数据库
 app.use(createPool)

@@ -11,7 +11,6 @@ import { crashReporter,logger} from './midddleware/logger';
 
 import todoApp from "./reducers";
 import App from "./components/App";
-import AsyncApp from './asyncApp';
 
 let store = createStore(
   todoApp,
@@ -28,8 +27,7 @@ let store = createStore(
 render(
   <Provider store={store}>
     <Router>
-      
-      <Route path="/reddit" component={AsyncApp} />
+      <Route path="/" component={App} />
     </Router>
   </Provider>,
   document.getElementById("root")

@@ -1,0 +1,1 @@
+{"version":3,"sources":["webpack:///./src/polyfills.js"],"names":["__webpack_require__"],"mappings":"2FAAAA,EAAA,QACAA,EAAA","file":"polyfills.606f5a5101482c5c7d78.js","sourcesContent":["import 'babel-polyfill';\nimport 'whatwg-fetch';"],"sourceRoot":""}

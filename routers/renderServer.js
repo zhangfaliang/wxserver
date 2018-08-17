@@ -18,7 +18,7 @@ function renderFullPage(html, preloadedState) {
           // http://redux.js.org/recipes/ServerRendering.html#security-considerations
           window.__PRELOADED_STATE__ = ${JSON.stringify(preloadedState).replace(/</g, '\\u003c')}
         </script>
-        <script src="/js/clinet.83d38f6bb1bc37f1e197.js"></script>
+        <script type="text/javascript" src="/runtime.129969e304cbe55a1e83.js"></script><script type="text/javascript" src="/vendors.0171376aecb4de217dc9.js"></script><script type="text/javascript" src="/polyfills.606f5a5101482c5c7d78.js"></script><script type="text/javascript" src="/index.9f2816fc73ebe592f8af.js"></script><script type="text/javascript" src="/clinet.561b8a8d6bfd7755df7d.js"></script></body>
 
       </body>
     </html>

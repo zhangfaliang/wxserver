@@ -15,10 +15,10 @@ class AsyncApp extends Component {
     this.handleRefreshClick = this.handleRefreshClick.bind(this)
   }
 
-  componentDidMount() {
-    const { dispatch, selectedSubreddit } = this.props
-    dispatch(fetchPostsIfNeeded(selectedSubreddit))
-  }
+  // componentDidMount() {
+  //   const { dispatch, selectedSubreddit } = this.props
+  //   dispatch(fetchPostsIfNeeded(selectedSubreddit))
+  // }
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.selectedSubreddit !== this.props.selectedSubreddit) {
