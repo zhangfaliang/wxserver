@@ -3,7 +3,8 @@ const home = require('./home')(Router);
 const page = require('./page')(Router);
 const set = require('./set')(Router);
 const upload = require('./upload')(Router);
-const jsonp = require('./jsonp')(Router)
+const jsonp = require('./jsonp')(Router);
+const renderserver = require('./renderServer')(Router)
 const routers = () => {
   //装载所有子路由
   let router = new Router();
@@ -12,6 +13,8 @@ const routers = () => {
   router.use("/set", set.routes(), set.allowedMethods());
   router.use("/api", upload.routes(), upload.allowedMethods());
   router.use('/jsonp', jsonp.routes(), jsonp.allowedMethods());
+  router.use('/renderserver', renderserver.routes(), renderserver.allowedMethods());
+
   return router;
 };
 module.exports = routers();

@@ -11,6 +11,7 @@ module.exports = {
   entry: {
     polyfills: "./src/polyfills.js",
     index: "./src/index.js",
+    clinet: "./src/utils/client.js"
   },
   plugins: [
     new CleanWeppackPlugin(["dist"]),

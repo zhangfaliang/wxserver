@@ -1,10 +1,12 @@
 import { combineReducers } from 'redux'
 import todos from './todos'
 import visibilityFilter from './visibilityFilter'
-import subreddit from './subreddit';
+import {  postsBySubreddit,
+  selectedSubreddit} from './subreddit';
 
 export default combineReducers({
   todos,
   visibilityFilter,
-  subreddit
+  postsBySubreddit,
+  selectedSubreddit
 })

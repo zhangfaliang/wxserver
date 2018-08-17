@@ -5,7 +5,8 @@ const config = require('../webpack.dev.js');
 const options = {
   contentBase: './dist',
   hot: true,
-  inline:true,
+  inline: true,
+  historyApiFallback: true,
   host: 'localhost'
 };
 

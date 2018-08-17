@@ -38,7 +38,7 @@ const router = require('../routers/index')
 const setSession = require('../middleware/setSession')
 const defaultConfig = require('../default.config')
 const connection = require('../middleware/connectionMysql')
-const createPool =require('../middleware/createPool')
+const createPool = require('../middleware/createPool')
 const app = new Koa();
 // 静态资源目录对于相对入口文件index.js的路径
 const staticPath = '../static'
@@ -87,5 +87,5 @@ app.use(errorLog);
 //   })
 // })
 
-app.listen(5000);
+app.listen(7000);
 module.exports = app

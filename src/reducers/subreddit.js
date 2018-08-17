@@ -1,55 +1,17 @@
-import { combineReducers } from "redux";
+import { combineReducers } from 'redux'
 import {
   SELECT_SUBREDDIT,
-  INVALODATE_SUBREDDIT,
+  INVALIDATE_SUBREDDIT,
   REQUEST_POSTS,
-  RECEIVE_POSTS,
-} from "../actions/subreddit";
+  RECEIVE_POSTS
+} from '../actions/subreddit.js'
 
-const initialzeStore = {
-  selectSubreddit: "frontend",
-  entities: {
-    users: {
-      2: {
-        id: 2,
-        name: "Andrew"
-      }
-    },
-    posts: {
-      42: {
-        id: 42,
-        title: "confusion about Flux and Relay",
-        author: 2
-      },
-      100: {
-        id: 100,
-        title:
-          "creating a  simple application using react js  and  flux architecture",
-        author: 2
-      }
-    }
-  },
-  postsBySubreddit: {
-    frontend: {
-      isFetching: true,
-      didInvalidate: false,
-      items: []
-    },
-    reactjs: {
-      isFetching: false,
-      didInvalidate: false,
-      lastUpdated: 1213123,
-      items: [42, 100]
-    }
-  }
-};
-
-function selectSubreddit(state = "reactjs", action) {
+function selectedSubreddit(state = 'reactjs', action) {
   switch (action.type) {
-    case SELECT_SUBREDDIT:
-      return action.subreddit;
-    default:
-      return state;
+  case SELECT_SUBREDDIT:
+    return action.subreddit
+  default:
+    return state
   }
 }
 
@@ -62,47 +24,46 @@ function posts(
   action
 ) {
   switch (action.type) {
-    case INVALODATE_SUBREDDIT:
-      return {
-        ...state,
+    case INVALIDATE_SUBREDDIT:
+      return Object.assign({}, state, {
         didInvalidate: true
-      };
+      })
     case REQUEST_POSTS:
-      return {
+      return Object.assign({}, state, {
         isFetching: true,
         didInvalidate: false
-      };
+      })
     case RECEIVE_POSTS:
-      return {
-        ...state,
+      return Object.assign({}, state, {
         isFetching: false,
         didInvalidate: false,
         items: action.posts,
         lastUpdated: action.receivedAt
-      };
+      })
     default:
-      return state;
+      return state
   }
 }
 
 function postsBySubreddit(state = {}, action) {
   switch (action.type) {
-    case INVALODATE_SUBREDDIT:
+    case INVALIDATE_SUBREDDIT:
     case RECEIVE_POSTS:
     case REQUEST_POSTS:
-      return {
-        ...state,
+      return Object.assign({}, state, {
         [action.subreddit]: posts(state[action.subreddit], action)
-      };
-
+      })
     default:
-      return state;
+      return state
   }
 }
 
-const rootReducer = combineReducers({
-  postsBySubreddit,
-  selectSubreddit
-});
+// const rootReducer = combineReducers({
+//   postsBySubreddit,
+//   selectedSubreddit
+// })
 
-export default rootReducer;
+export  {
+  postsBySubreddit,
+  selectedSubreddit
+}
