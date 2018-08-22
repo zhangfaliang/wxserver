@@ -1,8 +1,7 @@
 import { createSelector } from 'reselect';
 const getVisibilityFilter = (state) => state.visibilityFilter;
-const getTodos = (state) => state.todos;
+const getTodos = (state) => (state.todos.present);
 const getKeyword = (state) => state.keyword;
-
 
  const getVisibleTodos = createSelector(
   [getVisibilityFilter, getTodos],
