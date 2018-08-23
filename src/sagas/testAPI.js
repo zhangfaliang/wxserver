@@ -1,15 +1,20 @@
 import { call, put, takeLatest, select } from "redux-saga";
 import { loadData, loadDataSuccess, loadDataError,testSagaActionType } from "../actions/testAPI";
 
-function* loadDataWork() {
+function* loadDataWork(action) {
   try {
-    yield put(loadData());
-    const data = yield fetch(`https://www.reddit.com/r/${subreddit}.json`).then(
+    console.log(action,'444444444');
+    
+    const data = yield fetch(`https://www.reddit.com/r/subreddit.json`).then(
       response => response.json()
     );
-    yield put(loadDataSuccess(date));
+    console.log(data,'6666666666666666');
+    
+   // yield put(loadDataSuccess(date));
   } catch (error) {
-    yield put(loadDataError(error));
+    console.log(error,'5555555');
+
+    //yield put(loadDataError(error));
   }
 }
 

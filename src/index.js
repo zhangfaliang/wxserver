@@ -19,7 +19,7 @@ let store = createStore(
     applyMiddleware(
       // thunkMiddleware,
       sagaMiddleware,
-      logger
+      //logger
 
       //dispatchAndLog
     )
