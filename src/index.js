@@ -11,7 +11,7 @@ import { crashReporter, logger } from "./midddleware/logger";
 
 import todoApp from "./reducers";
 import App from "./components/App";
-import listenSaga from "./sagas/testAPI";
+import rootSaga from "./sagas/rootSaga";
 const sagaMiddleware = createSagaMiddleware();
 let store = createStore(
   todoApp,
@@ -25,7 +25,7 @@ let store = createStore(
     )
   )
 );
-sagaMiddleware.run(listenSaga);
+sagaMiddleware.run(rootSaga);
 //applyMiddlewareByMoneypatching(store,[logger])
 //<Route path="/" component={App} />
 render(

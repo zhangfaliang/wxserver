@@ -1,26 +1,23 @@
-import { call, put, takeLatest, select } from "redux-saga";
+import { call, put, takeLatest, select,takeEvery } from "redux-saga/effects";
 import { loadData, loadDataSuccess, loadDataError,testSagaActionType } from "../actions/testAPI";
 
 function* loadDataWork(action) {
-  try {
-    console.log(action,'444444444');
-    
-    const data = yield fetch(`https://www.reddit.com/r/subreddit.json`).then(
-      response => response.json()
-    );
+  try {    
+    const data = yield new Promise((resolve,reject) => { 
+      setTimeout(() => {
+        resolve({})
+      }, 1000);
+    })
     console.log(data,'6666666666666666');
-    
-   // yield put(loadDataSuccess(date));
+    yield put(loadDataSuccess(data));
   } catch (error) {
-    console.log(error,'5555555');
-
-    //yield put(loadDataError(error));
+    yield put(loadDataError(error));
   }
 }
 
 
 function* listenSaga() {
-  yield takeLatest(testSagaActionType.LOAD_DATA,loadDataWork)
+  yield takeEvery(testSagaActionType.LOAD_DATA,loadDataWork)
 }
 
 export default listenSaga
