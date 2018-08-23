@@ -3,13 +3,15 @@ import Footer from './todo/Footer'
 import AddTodo from '../containers/AppTodo'
 import VisibleTodoList from '../containers/VisibilityTodoList';
 import UndoRedo from '../containers/UndoRedo';
+import APILink from '../containers/APILink';
 
 const App = () => (
   <div>
     <AddTodo />
     <VisibleTodoList />
     <Footer />
-    <UndoRedo/>
+    <UndoRedo />
+    <APILink/>
   </div>
 )
 
